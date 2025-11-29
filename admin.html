@@ -23,7 +23,24 @@
             <label>Unavailable</label><br><br>
         </div>
         <button onclick="addFleet()">Add Fleet</button>
-        <div id="cardContainer"></div>
+        <nav id="nav">
+            <select id="categoryFilter">
+                <option>All</option>
+                <option>Auto</option>
+                <option>Car</option>
+                <option>Truck</option>
+                <option>Bus</option>
+            </select>
+            <select id="Availability">
+                <option>All</option>
+                <option>Available</option>
+                <option>Unavailable</option>
+            </select>
+            <button>Clear Filter</button>
+        </nav>
+        <main>
+            <div id="cardContainer"></div>
+        </main>
     </aside>
     <script>
 
@@ -44,7 +61,7 @@
                 driver,
                 vehicle,
                 Available,
-                imageUrl:img
+                imgUrl:img
             };
 
             VehicleCard.push(card);
@@ -54,6 +71,49 @@
             document.getElementById("category").value=""
             document.getElementById("radio").value=""
             document.getElementById("VehicleNo").value=""
+        }
+
+        function renderCard(VehicleList){
+            let list=document.getElementById("cardContainer");
+            list.innerHTML=""
+
+            VehicleList.forEach(card => {
+                let SingleCard=document.createElement("div")
+                SingleCard.className=SingleCard
+
+                //image
+                let image=document.createElement("img");
+                image.src=card.imgUrl;
+
+                //vehicle
+                let VehicleNo=document.createElement("h3")
+                VehicleNo.src=card.VehicleNo
+
+                let vehicle=document.createElement("h3")
+                vehicle.src=card.vehicle
+
+                let driver=document.createElement("h3")
+                driver.src=card.driver
+
+                let Available=document.createElement("h3")
+                Available.src=card.Available
+
+                deleteteBtn.addEventListener("click",function(){
+                    deleteCard(index)
+                })
+
+                SingleCard.appenChild(image);
+                SingleCard.appenChild(VehicleNo);
+                 SingleCard.appenChild(vehicle);
+                SingleCard.appenChild(driver);
+                SingleCard.appendChild(Available)
+
+                list.appendChild(SingleCard)
+            });
+        }
+        function deleteCard(index){
+            VehicleCard.splice(index,1)
+            renderCard(VehicleCard)
         }
         
     </script>
