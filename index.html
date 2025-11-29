@@ -7,11 +7,21 @@
 </head>
 <body>
     <h1>FLEET MANAGEMENT APP</h1>
+    <div id="container">
+        <input id="email" type="email" placeholder="Enter your email id"><br><br>
+        <input type="password" placeholder="Set your password"><br><br>
+    </div>
     <!--redirecting to admin page -->
     <button onclick="goToAdmin()">Login</button>
   <script>
     function goToAdmin(){
         window.location.href="admin.html"
+    }
+    function validation(email){
+        const email_id=document.getElementById("email")
+        if (email_id.validation()!=/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]^/){
+            alert("please enter correct email id")
+        }
     }
   </script>  
 </body>
