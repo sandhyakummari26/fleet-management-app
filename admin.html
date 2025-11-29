@@ -26,15 +26,34 @@
         <div id="cardContainer"></div>
     </aside>
     <script>
+
+        let VehicleCard=[]
+
         const img="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
+        
         function addFleet(){
             let VehicleNo=document.getElementById("VehicleNo").value.trim();
-            let driver=document.getElementById("Name")
+            let driver=document.getElementById("Name").value.trim();
             let vehicle=document.getElementById("category").value.trim();
             let Available=document.getElementById("radio").value.trim();
             if(!VehicleNo || !driver || !vehicle || !Available ){
                 alert("Please fill all details")
             }
+            let card={
+                VehicleNo,
+                driver,
+                vehicle,
+                Available,
+                imageUrl:img
+            };
+
+            VehicleCard.push(card);
+            renderCard(VehicleCard)
+
+            document.getElementById("Name").value=""
+            document.getElementById("category").value=""
+            document.getElementById("radio").value=""
+            document.getElementById("VehicleNo").value=""
         }
         
     </script>
