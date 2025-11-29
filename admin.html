@@ -24,7 +24,7 @@
         </div>
         <button onclick="addFleet()">Add Fleet</button>
         <nav id="nav">
-            <select id="categoryFilter">
+            <select onclick="filterVehicle" id="categoryFilter">
                 <option>All</option>
                 <option>Auto</option>
                 <option>Car</option>
@@ -38,6 +38,7 @@
             </select>
             <button>Clear Filter</button>
         </nav>
+        <hr>
         <main>
             <div id="cardContainer"></div>
         </main>
@@ -113,6 +114,18 @@
         }
         function deleteCard(index){
             VehicleCard.splice(index,1)
+            renderCard(VehicleCard)
+        }
+
+        function filterVehicle(){
+            let category=document.getElementById("categoryFilter").value;
+
+            if(category==="All"){
+                renderCard(VehicleCard);
+                return;
+            }
+
+            let filtered=VehicleCard.filter(list=>list.category===category)
             renderCard(VehicleCard)
         }
         
