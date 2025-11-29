@@ -7,7 +7,7 @@
 </head>
 <body>
     <aside>
-        <input type="" placeholder="Enter your Reg no of Vehicle"><br><br>
+        <input id="VehicleNo" type="" placeholder="Enter your Reg no of Vehicle"><br><br>
         <select id="category">
             <option value="select">Select</option>
             <option value="Auto">Auto</option>
@@ -15,14 +15,28 @@
             <option value="car">Car</option>
             <option value="bus">Bus</option>
         </select><br><br>
-        <input type="text" placeholder="Enter Driver name"><br><br>
-        <div>
-        <input type="radio">
-        <label>Available</label><br><br>
-        <input type="radio">
-        <label>Unavailable</label><br><br>
+        <input id="Name" type="text" placeholder="Enter Driver name"><br><br>
+        <div id="radio">
+            <input type="radio">
+            <label>Available</label><br><br>
+            <input type="radio">
+            <label>Unavailable</label><br><br>
         </div>
+        <button onclick="addFleet()">Add Fleet</button>
+        <div id="cardContainer"></div>
     </aside>
-    
+    <script>
+        const img="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
+        function addFleet(){
+            let VehicleNo=document.getElementById("VehicleNo").value.trim();
+            let driver=document.getElementById("Name")
+            let vehicle=document.getElementById("category").value.trim();
+            let Available=document.getElementById("radio").value.trim();
+            if(!VehicleNo || !driver || !vehicle || !Available ){
+                alert("Please fill all details")
+            }
+        }
+        
+    </script>
 </body>
 </html>
